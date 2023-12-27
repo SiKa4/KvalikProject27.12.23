@@ -1,0 +1,40 @@
+﻿<Window x:Class="OrganizationGreem.Windows.ContractWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrganizationGreem.Windows"
+        mc:Ignorable="d"
+        Title="Просмотр контракта" Height="450" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Column="0" Grid.Row="1" x:Name="ImageQrCode" Height="150" Width="150"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="5,5,5,5">
+            <Label Content="Товары" FontSize="13"/>
+            <ListView Name="ListItems">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=id_Item}" Width="100">id</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Width="85">Наименование</GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label Content="Дата завершения" FontSize="13"/>
+            <Label Name="DateEnd" FontSize="13"/>
+            <Label Content="Статус" FontSize="13"/>
+            <ComboBox Height="20px" Name="StatusCombo" ItemsSource="{Binding Path=Name}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
+            <Button x:Name="Save" Content="Сохранить" Margin="5,30,5,5" Click="Save_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
